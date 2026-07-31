@@ -240,6 +240,7 @@ public:
 	bool m_BirthdayAnnounced;
 
 	int m_RescueMode;
+	int m_RescueCount;
 
 	CSaveTee m_LastTeleTee;
 	std::optional<CSaveTee> m_LastDeath;

@@ -1002,6 +1002,8 @@ void CCharacter::StopRecording()
 
 void CCharacter::Die(int Killer, int Weapon, bool SendKillMsg)
 {
+	GetPlayer()->m_RescueCount = 0;
+
 	if(Killer != WEAPON_GAME && m_SetSavePos[RESCUEMODE_AUTO])
 		GetPlayer()->m_LastDeath = m_RescueTee[RESCUEMODE_AUTO];
 	StopRecording();
@@ -2514,6 +2516,7 @@ void CCharacter::Rescue()
 		}
 
 		m_LastRescue = Server()->Tick();
+		GetPlayer()->m_RescueCount++;
 		int StartTime = m_StartTime;
 		ERaceState DDRaceState = m_DDRaceState;
 		m_RescueTee[GetPlayer()->m_RescueMode].Load(this);

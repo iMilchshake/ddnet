@@ -715,13 +715,13 @@ void CGameTeams::OnFinish(CPlayer *pPlayer, int TimeTicks, const char *pTimestam
 	const int ClientId = pPlayer->GetCid();
 	CPlayerData *pData = GameServer()->Score()->PlayerData(ClientId);
 
-	char aBuf[128];
+	char aBuf[160];
 	SetLastTimeCp(pPlayer, -1);
 	// Note that the "finished in" message is parsed by the client
 	str_format(aBuf, sizeof(aBuf),
-		"%s finished in: %d minute(s) %5.2f second(s)",
+		"%s finished in: %d minute(s) %5.2f second(s) (rescued %d time(s))",
 		Server()->ClientName(ClientId), (int)Time / 60,
-		Time - ((int)Time / 60 * 60));
+		Time - ((int)Time / 60 * 60), pPlayer->m_RescueCount);
 	if(g_Config.m_SvHideScore)
 		GameServer()->SendChatTarget(ClientId, aBuf, CGameContext::FLAG_SIX);
 	else

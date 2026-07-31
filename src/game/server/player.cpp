@@ -150,6 +150,7 @@ void CPlayer::Reset()
 	m_SwapTargetsClientId = -1;
 	m_BirthdayAnnounced = false;
 	m_RescueMode = RESCUEMODE_AUTO;
+	m_RescueCount = 0;
 
 	m_CameraInfo.Reset();
 }
